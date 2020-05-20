@@ -11,6 +11,7 @@
     <modules>
         <module>spring-batch</module>
         <module>spring-boot-rest</module>
+        <module>spring-core</module>
     </modules>
 
 
