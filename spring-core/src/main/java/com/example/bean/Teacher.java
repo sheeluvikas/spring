@@ -1,13 +1,13 @@
 package com.example.bean;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
-import java.util.Date;
-
-public class Student {
-
+@Component
+public class Teacher {
+    @Value("${teacherName}")
     private String name;
-    private Date dob;
+    private Integer std;
 
     public String getName() {
         return name;
@@ -17,11 +17,11 @@ public class Student {
         this.name = name;
     }
 
-    public Date getDob() {
-        return dob;
+    public Integer getStd() {
+        return std;
     }
 
-    public void setDob(Date dob) {
-        this.dob = dob;
+    public void setStd(Integer std) {
+        this.std = std;
     }
 }

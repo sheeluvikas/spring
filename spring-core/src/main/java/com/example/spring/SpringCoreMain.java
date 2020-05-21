@@ -1,6 +1,8 @@
 package com.example.spring;
 
 import com.example.bean.Student;
+import com.example.bean.Teacher;
+import com.example.dao.intf.SpringDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -23,11 +25,18 @@ public class SpringCoreMain {
         // * rest later *
 
         /** https://www.baeldung.com/spring-classpathxmlapplicationcontext */
+        //TODO: to read : https://stackoverflow.com/questions/10037450/what-is-the-difference-between-spring-context-and-spring-core-dependencies
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         Student student = (Student) context.getBean("student");
         System.out.println(student.getName());
         student.setName("Vikas");
         System.out.println(student.getName());
+
+        Teacher teacher = (Teacher) context.getBean("teacher");
+        System.out.println(teacher.getName());
+
+        SpringDao springDao = (SpringDao)context.getBean("springDaoImpl");
+        springDao.save(student);
 
     }
 }
