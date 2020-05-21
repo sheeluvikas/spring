@@ -6,6 +6,10 @@ import com.example.dao.intf.SpringDao;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Random;
+
 /**
  * This is the example which explains the usage of spring core.
  *
@@ -28,15 +32,24 @@ public class SpringCoreMain {
         //TODO: to read : https://stackoverflow.com/questions/10037450/what-is-the-difference-between-spring-context-and-spring-core-dependencies
         ApplicationContext context = new ClassPathXmlApplicationContext("ApplicationContext.xml");
         Student student = (Student) context.getBean("student");
-        System.out.println(student.getName());
         student.setName("Vikas");
-        System.out.println(student.getName());
+        Random random = new Random();
+        student.setRollNumber(random.nextInt(9999999));
+        Date d = new Date();
+        Calendar c = Calendar.getInstance();
+        c.set(2010, 04, 12);
+        student.setDob(c.getTime());
+        SpringDao springDao = (SpringDao)context.getBean("springDaoImpl");
+//        springDao.save(student); // TODO : Uncomment when you need to save the details
 
         Teacher teacher = (Teacher) context.getBean("teacher");
-        System.out.println(teacher.getName());
+        System.out.println("Teacher Name : " + teacher.getName());
 
-        SpringDao springDao = (SpringDao)context.getBean("springDaoImpl");
-        springDao.save(student);
 
+        System.out.println("The Student Details for the given Id : ");
+        Student student1 = springDao.getStudentByRollNumber(120832);
+        System.out.println("Roll Number : " + student1.getRollNumber());
+        System.out.println("Name : " + student1.getName());
+        System.out.println("DOB :" + student1.getDob());
     }
 }

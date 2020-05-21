@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Teacher {
-    @Value("${teacherName}")
+
     private String name;
     private Integer std;
 
