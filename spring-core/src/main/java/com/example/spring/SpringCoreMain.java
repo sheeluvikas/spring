@@ -43,6 +43,10 @@ public class SpringCoreMain {
 //        springDao.save(student); // TODO : Uncomment when you need to save the details
 
         Teacher teacher = (Teacher) context.getBean("teacher");
+        Teacher teacher1 = (Teacher) context.getBean("teacher");
+
+        System.out.println("***********" + (teacher == teacher1));
+
         System.out.println("Teacher Name : " + teacher.getName());
 
 
